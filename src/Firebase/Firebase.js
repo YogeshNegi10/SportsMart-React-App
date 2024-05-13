@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 var firebaseConfig = {
-   apiKey:'',
+   apiKey:'AIzaSyAWgwF2Xj6kMYnZwCuPVsWvqSZijR21M0A',
    authDomain: "sportsmart-e1ed1.firebaseapp.com",
    projectId: "sportsmart-e1ed1",
    storageBucket: "sportsmart-e1ed1.appspot.com",
