@@ -147,6 +147,6 @@ const Login = () => {
       </div>
     </Layout>
   );
-};
+
 
 export default Login;
