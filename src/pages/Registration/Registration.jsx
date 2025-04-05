@@ -52,12 +52,13 @@ try {
     
      
 } catch (error) {
-  setLoading(false)
+
     if (error instanceof FirebaseError) {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage)
         toast.error(errorMessage)
+          setLoading(false)
      } else {
         console.log('Error:', error);
        
