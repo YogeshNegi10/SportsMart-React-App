@@ -8,6 +8,7 @@ import { Timestamp, addDoc, collection } from 'firebase/firestore'
 import { toast } from 'react-toastify'
 import { ColorRing } from 'react-loader-spinner'
 import MyContext from '../../Context/MyContext'
+import { FirebaseError } from 'firebase/app'
 
 
 
@@ -52,11 +53,16 @@ try {
      
 } catch (error) {
 
-    toast.error(error)
+    if (error instanceof FirebaseError) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+        toast.error(errorMessage)
+     } else {
+        console.log('Error:', error);
+     }
+     // Handle other types of errors here
      console.log(error)
-     setLoading(false)
-     toast.error('Error happen ! Plz register again !')
-    
 }
 
 
