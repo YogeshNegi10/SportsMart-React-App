@@ -52,7 +52,7 @@ try {
     
      
 } catch (error) {
-
+  setLoading(false)
     if (error instanceof FirebaseError) {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -61,7 +61,7 @@ try {
         setLoading(false)
      } else {
         console.log('Error:', error);
-        setLoading(false)
+       s
      }
      // Handle other types of errors here
 
