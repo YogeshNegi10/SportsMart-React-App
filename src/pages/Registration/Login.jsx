@@ -31,10 +31,10 @@ const Login = () => {
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage)
                 toast.error(errorMessage)
-               setLoading(false)
+               setLoading(true)
              } else {
                 console.log('Error:', error);
-              setLoading(false)
+              setLoading(true)
              
 
     }
