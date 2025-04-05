@@ -33,8 +33,10 @@ const Login = () => {
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage)
                 toast.error(errorMessage)
+      setLoading(false);
           
              } else {
+      setLoading(false);
                 console.log('Error:', error);
   };
   return (
@@ -147,8 +149,8 @@ const Login = () => {
       </div>
     </Layout>
   );
-
+    }
     };
 
 
-export default Login;
+export default Login
