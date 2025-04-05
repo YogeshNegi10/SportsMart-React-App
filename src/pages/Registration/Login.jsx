@@ -29,16 +29,19 @@ const Login = () => {
 
   
   if (error instanceof FirebaseError) {
+                
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage)
                 toast.error(errorMessage)
-      setLoading(false);
+                setLoading(false); 
           
              } else {
-      setLoading(false);
+              setLoading(false); 
                 console.log('Error:', error);
   };
+
+}
   return (
     <Layout>
       <div class="  flex justify-center mt-20 mb-10 w-full">
@@ -148,9 +151,9 @@ const Login = () => {
         </form>
       </div>
     </Layout>
-  );
-    }
-    };
+  )
 
+  };
 
+}
 export default Login
