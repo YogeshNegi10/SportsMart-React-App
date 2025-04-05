@@ -58,11 +58,13 @@ try {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage)
         toast.error(errorMessage)
+        setLoading(false)
      } else {
         console.log('Error:', error);
+        setLoading(false)
      }
      // Handle other types of errors here
-     console.log(error)
+
 }
 
 
