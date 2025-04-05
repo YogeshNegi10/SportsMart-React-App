@@ -6,6 +6,7 @@ import { auth } from "../../Firebase/Firebase";
 import { toast } from "react-toastify";
 import MyContext from "../../Context/MyContext";
 import { Circles, ColorRing } from "react-loader-spinner";
+import { FirebaseError } from 'firebase/app'
 
 const Login = () => {
   const { loading, setLoading } = useContext(MyContext);
@@ -25,9 +26,14 @@ const Login = () => {
 
       navigate("/");
     } catch (error) {
-      console.log(error);
-      toast.error('Error happen ! Plz Login again !')
-      setLoading(false);
+  if (error instanceof FirebaseError) {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+                toast.error(errorMessage)
+             } else {
+                console.log('Error:', error);
+             
 
     }
   };
