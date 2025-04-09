@@ -158,130 +158,83 @@ const MyState = ({ children }) => {
   
   const {cart, totalPrice} = useSelector((state)=>state.cart)
 
-  // const BuyNow = async () => {
+  const BuyNow = async () => {
 
    
-  //   if (
-  //     fullname === "" ||
-  //     address === "" ||
-  //     pincode === "" ||
-  //     phoneNumber === ""
-  //   ) {
-  //     toast.error("All fields are Required");
-  //   }
+    if (
+      fullname === "" ||
+      address === "" ||
+      pincode === "" ||
+      phoneNumber === ""
+    ) {
+      toast.error("All fields are Required");
+    }
 
-  //   const addressInfo = {
-  //     fullname,
-  //     address,
-  //     pincode,
-  //     phoneNumber,
-  //     date: new Date().toLocaleString("en-US", {
-  //       month: "short",
-  //       day: "2-digit",
-  //       year: "numeric",
-  //     }),
-  //   };
+    const addressInfo = {
+      fullname,
+      address,
+      pincode,
+      phoneNumber,
+      date: new Date().toLocaleString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      }),
+    };
 
     
 
 
-  //   const options = {
-  //     key: "rzp_test_6l2W6xFbW0RhEv",
-  //     key_secret: "kKYDHQFTlxr4IuZuueByi5us",
-  //     amount: parseInt(totalPrice),
-  //     currency: "INR",
-  //     order_receipt: "order_receipt" + fullname,
-  //     name: "SportsMart",
-  //     description: "For test purpose",
-  //     handler: function(response) {
-  //       toast.success("payment Successfull");
-  //       // window.location.href = '/orders'
-  //       const paymentId = response.razorpay_payment_id
+    const options = {
+      key: "rzp_test_6l2W6xFbW0RhEv",
+      key_secret: "kKYDHQFTlxr4IuZuueByi5us",
+      amount: parseInt(totalPrice),
+      currency: "INR",
+      order_receipt: "order_receipt" + fullname,
+      name: "SportsMart",
+      description: "For test purpose",
+      handler: function(response) {
+        toast.success("payment Successfull");
+        // window.location.href = '/orders'
+        const paymentId = response.razorpay_payment_id
 
-  //       const orderInfo = {
-  //         cart,
-  //         addressInfo,
-  //         date: new Date().toLocaleString("en-US", {
-  //           month: "short",
-  //           day: "2-digit",
-  //           year: "numeric",
-  //         }),
+        const orderInfo = {
+          cart,
+          addressInfo,
+          date: new Date().toLocaleString("en-US", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
+          }),
     
-  //         email:JSON.parse(localStorage.getItem('user')).user.email,
-  //         userid:JSON.parse(localStorage.getItem('user')).user.uid,
-  //         paymentId
-  //       }
+          email:JSON.parse(localStorage.getItem('user')).user.email,
+          userid:JSON.parse(localStorage.getItem('user')).user.uid,
+          paymentId
+        }
     
 
-  //       try {
-  //           const orderRef = collection(firedb,'order')
-  //           addDoc(orderRef,orderInfo)
+        try {
+            const orderRef = collection(firedb,'order')
+            addDoc(orderRef,orderInfo)
 
-  //       } catch (error) {
-  //         console.log(error)
-  //       }
+        } catch (error) {
+          console.log(error)
+        }
 
-  //     },
-  //     theme: {
-  //       color: "#3399cc",
-  //     },
-  //   };
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
 
 
 
-  //   const pay = new window.Razorpay(options);
-  //   pay.open()
+    const pay = new window.Razorpay(options);
+    pay.open()
 
-  // };
-
-  const stripePromise = loadStripe('pk_test_51RBzx3PDTdgD1br63kgJDjqfFvnyj71UPZ9LhbK0n7ym71k6uOofFpSJmEWCHoD9ggqbp03Pq6rRLStzpqYXrFls00dygoWSJC');
-
-const BuyNow = async () => {
-
-  if (!fullname || !address || !pincode || !phoneNumber) {
-    toast.error("All fields are required");
-    return;
-  }
-
-  const user = JSON.parse(localStorage.getItem('user'))?.user;
-
-  const addressInfo = {
-    fullname,
-    address,
-    pincode,
-    phoneNumber,
-    date: new Date().toLocaleDateString('en-US', {
-      month: 'short',
-      day: '2-digit',
-      year: 'numeric',
-    }),
   };
 
-  try {
-    const stripe = await stripePromise;
-
-    const response = await axios.post('http://localhost:4000/api/create-checkout', {
-      cart,
-      addressInfo,
-      email: user.email,
-      userid: user.uid,
-    });
-
-    const session = response.data;
-
-    const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (result.error) {
-      toast.error(result.error.message);
-    }
-  } catch (error) {
-    console.error("Stripe Checkout Error:", error);
-    toast.error("Something went wrong. Try again.");
-  }
-};
-
+ 
 
   function resetCart (){
      localStorage.removeItem('cart')
