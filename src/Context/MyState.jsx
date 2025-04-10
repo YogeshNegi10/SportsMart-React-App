@@ -195,7 +195,7 @@ const MyState = ({ children }) => {
       description: "For test purpose",
       handler: function(response) {
         toast.success("payment Successfull");
-        // window.location.href = '/orders'
+        window.location.href = '/orders'
         const paymentId = response.razorpay_payment_id
 
         const orderInfo = {
