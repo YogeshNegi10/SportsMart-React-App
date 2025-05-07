@@ -1,4 +1,4 @@
-live Demo at https://sports-mart-ecommerce-react-app.vercel.app/
+live Demo at https://sports-mart-ecommerce-react-app.vercel.app
 
 🛍️ **E-Commerce Website – Project Highlights**
 
