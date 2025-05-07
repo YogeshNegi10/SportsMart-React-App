@@ -1,6 +1,6 @@
 live Demo at https://sports-mart-ecommerce-react-app.vercel.app/
 
-🛍️ E-Commerce Website – Project Highlights
+🛍️ **E-Commerce Website – Project Highlights**
 
 ⚛️ Built a modern e-commerce platform using React, Redux, and Context API for efficient state and data management.
 
